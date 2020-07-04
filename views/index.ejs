@@ -1,0 +1,45 @@
+
+<%- include('partials/header') %>
+        <section id="page"> <!-- Defining the #page section with the section tag -->
+            
+            <header> <!-- Defining the header section of the page with the appropriate tag -->
+            
+                <hgroup>
+                    <h1>Movies of the Decade</h1>
+                    <h3>2000 ~ 2010</h3>
+                </hgroup>
+                                
+                <nav class="clear"> <!-- The nav link semantically marks your main site navigation -->
+                    <ul>
+                        <li><a href="/Create">Add New Movie</a></li>
+                    </ul>
+                </nav>
+            
+            </header>
+            <section id="articles"> <!-- A new section with the articles -->
+
+				<!-- Article 1 start -->
+
+                <div class="line"></div>  <!-- Dividing line -->
+                <% Posts.forEach((post, index) => { %>
+                <article id="article<%= index + 1 %>"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
+                    <h2><a id="movie-title" href="/edit/<%= post._id %>"><%= post.title %></a><a class="go_up" href="#" class="up">&uparrow;</a></h2>
+
+                    <div class="line"></div>
+                    
+                    <div class="articleBody clear">
+                    
+                    	<figure> <!-- The figure tag marks data (usually an image) that is part of the article -->
+	                    	<a href="/pages/<%=post.tag%>"><img src="/assets/img/<%= post.tag %>.jpg" alt="<%= post.title %> Scene" title="<%= post.title %>Scene" width="500" height="300"></a>
+                        </figure>
+                        
+                        <p>Directed by: <%= post.director %></p>
+                        <p><%= post.content %></p>
+						<p class="pbold">Click on the image for more information</p>
+                    </div>
+                </article>
+                <% }); %>
+<%- include('partials/footer') %>                
+				
+
+
